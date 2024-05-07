@@ -1,21 +1,25 @@
 const nodemailer = require('nodemailer');
 
+const mailService = 'gmail';
+
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    service: mailService,
     auth: {
-        user: "webm4iler@gmail.com",
-        pass: "ewgeexrxlspfrstm"
+        user: process.env.MAILER_EMAIL,
+        pass: process.env.MAILER_PASSWORD
     }
 });
 
-const mailOptions = {
-    from: "webm4iler@gmail.com",
-    to: "danhle002@gmail.com",
-    subject: "Test email",
-    text: "This is a test email"
-}
-
 exports.sendNotification = async (req, res) => {
+
+    const mailOptions = 
+    {
+        from: process.env.MAILER_EMAIL,
+        to: req.query.destination,
+        subject: req.query.destination_subject,
+        text: req.query.destination_text,
+    };
+
     transporter.sendMail(mailOptions, (err, info) => { 
         if(err) {
             console.log(err);
