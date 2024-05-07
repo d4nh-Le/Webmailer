@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+const keyModule = require('../utilities/key.utility');
 
 const mailService = 'gmail';
 
@@ -10,15 +11,24 @@ const transporter = nodemailer.createTransport({
     }
 });
 
+
 exports.sendNotification = async (req, res) => {
 
+    const currentTime = new Date().toISOString();
     const mailOptions = 
     {
         from: process.env.MAILER_EMAIL,
-        to: req.query.destination,
-        subject: req.query.destination_subject,
-        text: req.query.destination_text,
+        to: client_info.email,
+        subject: "Hi " + client_info.username + ", someone just visited your page: " + req.query.website_page,
+        text: "Page:" + req.query.website_page + "Time:" + currentTime
     };
+
+    const client_info = keyModule.getKeyInfo(req.query.key)[0];
+
+    if (!client_info) {
+        res.status(404).json({ error: 'Key not found' });
+        return;
+    }
 
     transporter.sendMail(mailOptions, (err, info) => { 
         if(err) {

@@ -1,18 +1,36 @@
-const { checkValidKey } = require('../utilities/key.utility');
+const keyModule = require('../utilities/key.utility');
 
-describe('checkValidKey', () => {
-    it('Key.utility - check valid key functionality', () => {
+
+
+describe('Key.utility - checkValidKey()', () => {
+    it('Check valid key functionality', () => {
         const key = 'webmailer_generatedtestkey0001';
-        expect(checkValidKey(key)).toBe(true);
+        expect(keyModule.checkValidKey(key)).toBe(true);
     });
 
-    it('Key.utility - check invalid key functionality', () => {
+    it('Check invalid key functionality', () => {
         const key = 'webmailer_generatedtestkey0002';
-        expect(checkValidKey(key)).toBe(false);
+        expect(keyModule.checkValidKey(key)).toBe(false);
     });
 
-    it('Key.utility - check key length functionality', () => {
+    it('Check key length functionality', () => {
         const key = 'webmailer_generatedtestkey001';
-        expect(checkValidKey(key)).toBe(false);
+        expect(keyModule.checkValidKey(key)).toBe(false);
+    });
+});
+
+describe('Key.utility - getKeyInfo()', () => {
+    it('Key.utility - check return correct key_info functionality', async () => {
+        const keyInfo = await keyModule.getKeyInfo('webmailer_generatedtestkey0001')[0];
+
+        const expectedKeyInfo = {
+            username : "Test0001",
+            email : "testkey@test.com",
+            website : "https://onlytestkey.com"
+        };
+
+        expect(keyInfo.username).toEqual(expectedKeyInfo.username);
+        expect(keyInfo.email).toEqual(expectedKeyInfo.email);
+        expect(keyInfo.website).toEqual(expectedKeyInfo.website);
     });
 });
