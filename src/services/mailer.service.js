@@ -14,6 +14,12 @@ const transporter = nodemailer.createTransport({
 
 exports.sendNotification = async (req, res) => {
 
+    if(keyModule.checkValidKey(req.query.key) === false) {
+        res.status(400).json({ error: 'Error: Invalid Key' });
+        return;
+    }
+
+    const client_info = keyModule.getKeyInfo(req.query.key)[0];
     const currentTime = new Date().toISOString();
     const mailOptions = 
     {
@@ -22,13 +28,6 @@ exports.sendNotification = async (req, res) => {
         subject: "Hi " + client_info.username + ", someone just visited your page: " + req.query.website_page,
         text: "Page:" + req.query.website_page + "Time:" + currentTime
     };
-
-    const client_info = keyModule.getKeyInfo(req.query.key)[0];
-
-    if (!client_info) {
-        res.status(404).json({ error: 'Key not found' });
-        return;
-    }
 
     transporter.sendMail(mailOptions, (err, info) => { 
         if(err) {
