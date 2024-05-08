@@ -1,21 +1,9 @@
-const fs = require('fs');
-const path = require('path');
+const { check } = require('express-validator');
 
-function validateKey(key) {
-    if (key.length !== 30) {
-        return false;
-    }
+exports.validateKey = check('key')
+    .isLength({ min: 30, max: 30 }) 
+    .withMessage('Key must be between 5 and 30 characters long');
 
-    try {
-        data = fs.readFileSync(path.join(__dirname, '../assets/keypairs.json'), 'utf8');
-    } catch (err) {
-        console.error('Error reading file:', err);
-        return false;
-    }
-
-    const keyPairs = JSON.parse(data);
-
-    return keyPairs.some(keyPair => keyPair.key === key);
-}
-
-exports.validateKey = validateKey;
+exports.validateWebsitePage = check('website_page')
+    .isURL() 
+    .withMessage('Website page must be a valid URL');

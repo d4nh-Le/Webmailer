@@ -1,4 +1,4 @@
-const keyModule = require('../utilities/key.utility');
+const keyModule = require('../../utilities/key.utility');
 
 describe('Key.utility - generateKey()', () => {
 

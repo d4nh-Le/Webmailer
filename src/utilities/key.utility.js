@@ -7,7 +7,7 @@ const path = require('path');
 */
 function generateKey() {
     let key = 'webmailer_';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
     for (let i = 0; i < 20; i++) {
         key += characters.charAt(Math.floor(Math.random() * characters.length));
