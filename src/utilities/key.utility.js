@@ -12,8 +12,6 @@ function generateKey() {
     for (let i = 0; i < 20; i++) {
         key += characters.charAt(Math.floor(Math.random() * characters.length));
     }
-
-    console.log(key);
     return key;
 }
 
