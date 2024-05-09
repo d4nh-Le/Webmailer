@@ -1,9 +1,29 @@
-const { check } = require('express-validator');
+const { check, validationResult } = require('express-validator');
 
-exports.validateKey = check('key')
-    .isLength({ min: 30, max: 30 }) 
-    .withMessage('Key must be between 5 and 30 characters long');
+/*
+ * Validate the key query parameter middleware
+ */
+exports.validateKey = [
+    check('key').isLength({ min: 30, max: 30 }).withMessage('Invalid key - length error'),
+    (req, res, next) => {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
+      next();
+    },
+  ];
 
-exports.validateWebsitePage = check('website_page')
-    .isURL() 
-    .withMessage('Website page must be a valid URL');
+/*
+ * Validate the website_page query parameter middleware
+ */
+exports.validateWebsitePage = [
+    check('website_page').isURL().withMessage('Invalid website_page - URL error'),
+    (req, res, next) => {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
+      next();
+    },
+  ];
