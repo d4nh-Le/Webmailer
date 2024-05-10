@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 /* 
     * Generate a key
@@ -12,8 +13,10 @@ function generateKey() {
     for (let i = 0; i < 20; i++) {
         key += characters.charAt(Math.floor(Math.random() * characters.length));
     }
+
     return key;
 }
+
 
 /* 
     * Check if the key is valid
@@ -38,7 +41,15 @@ function checkValidKey(key) {
 
     const keyPairs = JSON.parse(data);
 
-    return keyPairs.some(keyPair => keyPair.key === key);
+    const hashedKey = crypto.createHash('sha256').update(key).digest('hex');
+
+    for (let keyPair of keyPairs) {
+        if (keyPair.key === hashedKey) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 /* 
@@ -47,6 +58,8 @@ function checkValidKey(key) {
     * @returns {object} key info
 */
 function getKeyInfo(key) {
+
+    const hashedKey = crypto.createHash('sha256').update(key).digest('hex');
 
     try {
         data = fs.readFileSync(path.join(__dirname, '../assets/keypairs.json'), 'utf8');
@@ -58,7 +71,7 @@ function getKeyInfo(key) {
     const keyPairs = JSON.parse(data);
 
     for (let keyPair of keyPairs) {
-        if (keyPair.key === key) {
+        if (keyPair.key === hashedKey) {
             return keyPair.key_info;
         }
     }
