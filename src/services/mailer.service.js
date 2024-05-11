@@ -26,7 +26,7 @@ exports.sendNotification = async (req, res) => {
         from: process.env.MAILER_EMAIL,
         to: client_info.email,
         subject: "Hi " + client_info.username + ", someone just visited your page: " + req.query.page,
-        text: "Page:" + req.query.page + "Time:" + currentTime + "IP:" + req.ip + "Referer:" + req.query.referer
+        text: "Page:" + req.query.page + "Time:" + currentTime + "IP:" + req.query.ip + "Referer:" + req.query.referer
     };
 
     transporter.sendMail(mailOptions, (err, info) => { 
