@@ -15,7 +15,7 @@ app.use(cors());
 app.use(helmet());
 
 // app.put('/registration', )
-app.get('/pageVisited', [Sanitizer.sanitizeKey, Sanitizer.sanitizeWebsitePage, Validator.validateKey, Validator.validateWebsitePage], 
+app.get('/pageVisited', [Validator.validateRequestParameters, Sanitizer.sanitizeKey, Sanitizer.sanitizeWebsitePage, Validator.validateKey, Validator.validateWebsitePage], 
   mailerService.sendNotification
 );
     

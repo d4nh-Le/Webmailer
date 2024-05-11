@@ -1,5 +1,30 @@
 const { check, validationResult } = require('express-validator');
 
+
+/*
+ * Validate the key query parameter middleware
+ */
+exports.validateRequestParameters = (req, res, next) => {
+    const requiredParameters = ['key', 'page'];
+    const optionalParameters = ['ip', 'referer'];
+    const allowedParameters = [...requiredParameters, ...optionalParameters];
+    const requestParameters = Object.keys(req.query);
+
+    for (let i = 0; i < requestParameters.length; i++) {
+        if (!allowedParameters.includes(requestParameters[i])) {
+            return res.status(400).json({ error: `Invalid parameter: ${requestParameters[i]}` });
+        }
+    }
+
+    for (let i = 0; i < requiredParameters.length; i++) {
+        if (!requestParameters.includes(requiredParameters[i])) {
+            return res.status(400).json({ error: `Missing required parameter: ${requiredParameters[i]}` });
+        }
+    }
+
+    next();
+};
+
 /*
  * Validate the key query parameter middleware
  */
@@ -18,7 +43,7 @@ exports.validateKey = [
  * Validate the website_page query parameter middleware
  */
 exports.validateWebsitePage = [
-    check('website_page').isURL().withMessage('Invalid website_page - URL error'),
+    check('page').isString().withMessage('Invalid page - format error'),
     (req, res, next) => {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
