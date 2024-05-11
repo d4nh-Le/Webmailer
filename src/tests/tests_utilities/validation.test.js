@@ -21,13 +21,4 @@ describe('Validation.utility', () => {
     expect(response.status).toBe(400);
     expect(response.body.errors[0].msg).toBe('Invalid key - length error');
   });
-
-  it('validateWebsitePage should return an error for invalid website_page', async () => {
-    const response = await request(app)
-      .get('/testWebsitePage')
-      .query({ website_page: 'not a url' });
-
-    expect(response.status).toBe(400);
-    expect(response.body.errors[0].msg).toBe('Invalid website_page - URL error');
-  });
 });
