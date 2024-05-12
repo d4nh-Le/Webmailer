@@ -143,10 +143,19 @@ describe('sanitize.utility', () => {
         expect(response.status).toBe(200);
     });
 
-    it('sanitizeIp should sanitize - IP query parameter incorrect format', async () => {
+    it('sanitizeIp should sanitize - IP query parameter incorrect format p1', async () => {
         const response = await request(app)
         .get('/testIP')
         .query({IP: 'invalidIP' });
+
+        expect(response.status).toBe(400);
+        expect(response.text).toBe('S103 - Invalid parameter: IP');
+    });
+
+    it('sanitizeIp should sanitize - IP query parameter incorrect format p2', async () => {
+        const response = await request(app)
+        .get('/testIP')
+        .query({IP: '100.100.100.100.10.10' });
 
         expect(response.status).toBe(400);
         expect(response.text).toBe('S103 - Invalid parameter: IP');

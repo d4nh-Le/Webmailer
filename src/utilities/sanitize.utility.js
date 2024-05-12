@@ -20,7 +20,7 @@ const sanitizePage = [
  * Sanitize the ip query parameter middleware
  */
 const sanitizeIp = [
-    check('IP').isIP(4).withMessage('S103 - Invalid parameter: IP').optional().trim().escape(),
+    check('ip').isIP(4).withMessage('S103 - Invalid parameter: IP').optional().trim().escape(),
 ];
 
 
