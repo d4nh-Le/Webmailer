@@ -29,7 +29,7 @@ const validateRequestParameters = (req, res, next) => {
  * Validate the key query parameter middleware
  */
 const validateKey = [
-    check('key').isLength({ min: 30, max: 30 }).withMessage('V203 - Invalid key - length error'),
+    check('key').isLength({ min: 30, max: 30 }).withMessage('V203 - Invalid parameter: key - length error'),
     (req, res, next) => {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
@@ -58,3 +58,7 @@ exports.ValidateQuery = [
     ...validateWebsitePage,
     validateRequestParameters
   ];
+
+exports.validateKey = validateKey;
+exports.validateWebsitePage = validateWebsitePage;
+exports.validateRequestParameters = validateRequestParameters;

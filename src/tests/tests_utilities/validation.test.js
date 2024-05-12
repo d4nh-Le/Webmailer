@@ -19,6 +19,6 @@ describe('Validation.utility', () => {
       .query({ key: 'short' });
 
     expect(response.status).toBe(400);
-    expect(response.body.errors[0].msg).toBe('Invalid key - length error');
+    expect(response.body.errors[0].msg).toBe('V203 - Invalid parameter: key - length error');
   });
 });
