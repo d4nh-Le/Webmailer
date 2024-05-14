@@ -11,44 +11,29 @@ describe('GeoIP', () => {
         const ip = "70.75.135.126";
         const geoIPInfo = await Locator.getGeoIp(ip);
 
-        let testCity = geoIPInfo.city;
-        let testCountry = geoIPInfo.country;
-
-        expect(testCity).toBe("Calgary");
-        expect(testCountry).toBe("Canada");
+        expect(geoIPInfo).toBe("Calgary, Canada");
     });
 
     it('Check getGeoIPInfo() functionality - US', async () => {
         const ip = "44.201.44.33";
         const geoIPInfo = await Locator.getGeoIp(ip);
 
-        let testCity = geoIPInfo.city;
-        let testCountry = geoIPInfo.country;
-
-        expect(testCity).toBe("Ashburn");
-        expect(testCountry).toBe("United States");
+        expect(geoIPInfo).toBe("Ashburn, United States");;
     });
 
     it('Check getGeoIPInfo() functionality', async () => {
         const ip = "86.44.72.63";
         const geoIPInfo = await Locator.getGeoIp(ip);
 
-        let testCity = geoIPInfo.city;
-        let testCountry = geoIPInfo.country;
 
-        expect(testCity).toBe("Sligo");
-        expect(testCountry).toBe("Ireland");
+        expect(geoIPInfo).toBe("Sligo, Ireland");
     });
 
     it('Check getGeoIPInfo() functionality', async () => {
         const ip = "42.119.236.45";
         const geoIPInfo = await Locator.getGeoIp(ip);
 
-        let testCity = geoIPInfo.city;
-        let testCountry = geoIPInfo.country;
-
-        expect(testCity).toBe("Ho Chi Minh City");
-        expect(testCountry).toBe("Vietnam");
+        expect(geoIPInfo).toBe("Ho Chi Minh City, Vietnam");
     });
 
     it('Check getGeoIPInfo() functionality - unavailable', async () => {
@@ -60,6 +45,13 @@ describe('GeoIP', () => {
 
     it('Check getGeoIPInfo() functionality - invalid ip', async () => {
         const ip = "invalidip";
+        const geoIPInfo = await Locator.getGeoIp(ip);
+
+        expect(geoIPInfo).toBe("Unavailable");
+    });
+
+    it('Check getGeoIPInfo() functionality - null ip', async () => {
+        const ip = null;
         const geoIPInfo = await Locator.getGeoIp(ip);
 
         expect(geoIPInfo).toBe("Unavailable");
