@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer');
 const keyModule = require('../utilities/key.utility');
+const Locator = require('../utilities/geoip.utility');
 
 const mailService = 'gmail';
 
@@ -19,15 +20,20 @@ exports.sendNotification = async (req, res) => {
         return;
     }
 
-    const client_info = keyModule.getKeyInfo(req.query.key)[0];
-    const currentTime = new Date().toISOString();
-    const mailOptions = 
-    {
+    const client_info = await keyModule.getKeyInfo(req.query.key)[0];
+    const client_location = await Locator.getGeoIp(req.query.ip);
+    const currentTime = new Date().toLocaleString('en-GB').replace(',', '');
+    
+
+    const mailOptions = {
         from: process.env.MAILER_EMAIL,
         to: client_info.email,
         subject: "Hi " + client_info.username + ", someone just visited your page: " + req.query.page,
-        text: "Page:" + req.query.page + "Time:" + currentTime + "IP:" + req.query.ip + "Referer:" + req.query.referer
-    };
+        html: `<p>Page: <strong>${req.query.page}</strong></p>
+        <p>Time: <strong>${currentTime} GMT-6</strong></p>
+        <p>Location: <strong>${client_location}</strong></p>
+        <p>Referer: <strong>${req.query.referer ? req.query.referer : "Unavailable"}</strong></p>`
+};
 
     transporter.sendMail(mailOptions, (err, info) => { 
         if(err) {
