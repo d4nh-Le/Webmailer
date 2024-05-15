@@ -28,11 +28,37 @@ exports.sendNotification = async (req, res) => {
     const mailOptions = {
         from: process.env.MAILER_EMAIL,
         to: client_info.email,
-        subject: "Hi " + client_info.username + ", someone just visited your page: " + req.query.page,
-        html: `<p>Page: <strong>${req.query.page}</strong></p>
+        subject: "Notification from your website",
+        html:`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Your Email Title</title>
+            <!-- Other meta tags or styles -->
+        </head>
+        <body>
+            <!-- Preheader Text -->
+            <div style="display:none;font-size:1px;color:#fefefe;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">
+            Hi ${client_info.username}, someone just visited your page: ${req.query.page}.
+            </div>
+
+            <div style="display:none;font-size:1px;color:#fefefe;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">
+            ${"\u200C".repeat(500)}
+        </div>
+            
+            <!-- Your email content -->
+        <h3>Someone visited your website:</h3>
+        <div style="background-color: #f0f0f0; padding: 10px 20px 10px 10px; display:inline-block">
+        <p>Page: <strong>${req.query.page}</strong></p>
         <p>Time: <strong>${currentTime} GMT-6</strong></p>
         <p>Location: <strong>${client_location}</strong></p>
-        <p>Referer: <strong>${req.query.referer ? req.query.referer : "Unavailable"}</strong></p>`
+        <p>Referer: <strong>${req.query.referer ? req.query.referer : "Unavailable"}</strong></p>
+        </div>
+        </body>
+        <footer>
+            <h6>Offered by Webmailer. For more information, visit <a href="https://github.com/d4nh-Le/webmailer">Webmailer Github</a> for support and suggestion.</h6>
+        </html>
+    `
 };
 
     transporter.sendMail(mailOptions, (err, info) => { 
@@ -41,7 +67,7 @@ exports.sendNotification = async (req, res) => {
             res.status(500).json({ error: err.message });
         } else {
             console.log(info);
-            res.status(200).json(info);
+            res.status(200).json({ message: 'Sucessfully triggered.' });
         }
     });
 };
