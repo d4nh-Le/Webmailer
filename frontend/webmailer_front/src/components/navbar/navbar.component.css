@@ -1,0 +1,49 @@
+@font-face {
+        font-family: 'LogoFont';
+        src: url('../../assets/fonts/SourceSans3-Medium.ttf') format('truetype');
+
+}
+
+:root {
+    --header: rgba(60, 60, 67);
+    --text: rgba(60, 60, 67, .78);
+    --text-fade: rgba(60, 60, 67, .56);
+}
+
+.navbar {
+    height: 40px;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 20vw 10px 20vw;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-left {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-right {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-title {
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 0.2px;
+    padding: 20px;
+    text-decoration: none;
+    color: #ff9f39;
+    font-family: 'LogoFont';
+    margin-left: -10px;
+}
+
+.navbar-item {
+    padding: 20px;
+    text-decoration: none;
+    color: var(--header);
+}
