@@ -1,0 +1,86 @@
+.intro {
+    padding: 40px 20vw 40px 20vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro-title {
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 0.2px;
+    color: var(--page-color);
+    font-family: var(--vp-font-family-base);
+}
+
+.intro-content {
+    padding: 10px 0 10px 0;
+    font-size: 20px;
+    text-align: center;
+}
+
+.intro-bottom {
+    padding: 30px 0 30px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro-item {
+    padding: 20px;
+}
+
+.get-started {
+    background-color: var(--page-color);
+    color: #ffffff;
+}
+
+.register, .documentation {
+    background-color: #ffffff;
+    color: var(--text);
+}
+
+.intro-item .button {
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.button {
+    width: 150px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin: 0px 10px 0 10px;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    vertical-align: middle;
+    border-radius: 0.5rem;
+    user-select: none;
+    gap: 0.75rem;
+    box-shadow: 1px 4px 6px 2px #488aec31, 0 2px 4px -1px #488aec17;
+    transition: all 0.6s ease;
+  }
+  
+  .button:hover {
+    box-shadow: 0 10px 15px -3px #488aec4f, 0 4px 6px -2px #488aec17;
+  }
+  
+  .button:focus,
+  .button:active {
+    opacity: 0.85;
+    box-shadow: none;
+  }
+  
+  .button svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
