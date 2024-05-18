@@ -1,0 +1,22 @@
+.instruction {
+    padding: 20px 20vw 20px 20vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.instruction-title {
+    font-size: 30px;
+    color: var(--header);
+    font-family: var(--title-font);
+    padding: 10px 0 15px 0;
+}
+
+.instruction-content {
+    text-align: center;
+}
+
+.instruction-item {
+    color: var(--text);
+}

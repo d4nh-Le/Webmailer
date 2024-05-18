@@ -1,5 +1,5 @@
 .intro {
-    padding: 40px 20vw 40px 20vw;
+    padding: 80px 20vw 40px 20vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -11,13 +11,14 @@
     font-weight: bold;
     letter-spacing: 0.2px;
     color: var(--page-color);
-    font-family: var(--vp-font-family-base);
+    font-family: var(--title-font);
 }
 
 .intro-content {
     padding: 10px 0 10px 0;
     font-size: 20px;
     text-align: center;
+    color: var(--text);
 }
 
 .intro-bottom {
