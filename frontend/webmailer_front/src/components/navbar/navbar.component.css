@@ -9,6 +9,7 @@
     --text: rgba(60, 60, 67, .78);
     --text-fade: rgba(60, 60, 67, .56);
     --vp-font-family-base: ui-sans-serif, system-ui, sans-serif;
+    --page-color: #ff9f39;
 }
 
 .navbar {
@@ -38,7 +39,7 @@
     letter-spacing: 0.2px;
     padding: 20px;
     text-decoration: none;
-    color: #ff9f39;
+    color: var(--page-color);
     font-family: 'LogoFont';
     margin-left: -10px;
 }
