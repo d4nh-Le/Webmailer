@@ -3,12 +3,10 @@ import './intro.component.css';
 function intro() {
     return (
         <div className="intro">
-
-
             <div class="intro-top">           
             <div class="intro-title">Website traffics and analytics - all in your email.</div>
            <div class="intro-content">Webmailer collects and notifies you about your website traffics and performance through your email.</div>  
-           <div class="intro-content">No app download needed - and free.</div>
+           <div class="intro-content">No complicated services • No app download needed - and free.</div>
            </div>
 
 
