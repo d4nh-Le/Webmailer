@@ -1,0 +1,30 @@
+.footer {
+    height: 40px;
+    border-top: 1px solid #e0e0e0;
+    padding: 15px 20vw 15px 20vw;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-note {
+    padding-bottom: 5px;
+}
+
+.footer-credit {
+    padding-top: 5px;
+}
+
+.footer-note, .footer-credit {
+    color: var(--text);
+    text-decoration: none;
+    font-family: var(--vp-font-family-base);
+}
+
+.footer-link {
+    text-decoration: none;
+    color: inherit;
+    text-decoration: underline;
+}

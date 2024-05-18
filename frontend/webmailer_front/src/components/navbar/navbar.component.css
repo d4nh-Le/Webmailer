@@ -8,6 +8,7 @@
     --header: rgba(60, 60, 67);
     --text: rgba(60, 60, 67, .78);
     --text-fade: rgba(60, 60, 67, .56);
+    --vp-font-family-base: ui-sans-serif, system-ui, sans-serif;
 }
 
 .navbar {
