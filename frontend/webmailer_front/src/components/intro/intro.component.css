@@ -45,7 +45,7 @@
     color: #ffffff;
 }
 
-.register, .documentation {
+.documentation {
     background-color: #ffffff;
     color: var(--text);
 }

@@ -1,0 +1,53 @@
+.brief-map {
+    padding: 40px 20vw 40px 20vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.brief-card-item {
+    margin: 0 10px 0 10px;
+}
+
+.brief-card {
+    width: 320px;
+    height: 320px;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, .05);
+    border: 2px solid #f0f0f0;
+  }
+  
+  .brief-title {
+    font-weight: 600;
+    color: rgb(31 41 55);
+  }
+
+  .brief-title svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .brief-card .brief-card-lower {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .brief-description-icon svg {
+    width: 6rem;
+    height: 6rem;
+  }
+  .brief-description-content {
+    padding: 10px;
+    text-align: center;
+  }
+
+  .brief-description-content p {
+    font-size: 18px;
+    color: var(--text);
+  }
+  
