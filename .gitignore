@@ -1,3 +1,6 @@
 .env
 node_modules 
 keypairs.json
+dbscript.text
+databaseInit_1.js
+databaseInit_2.js

@@ -48,7 +48,7 @@ exports.sendNotification = async (req, res) => {
             
             <!-- Your email content -->
         <h3>Someone visited your website:</h3>
-        <div style="background-color: #f0f0f0; padding: 10px 20px 10px 10px; display:inline-block">
+        <div style="background-color: #f0f0f0; padding: 10px 20px 10px 10pxgi; display:inline-block">
         <p>Page: <strong>${req.query.page}</strong></p>
         <p>Time: <strong>${currentTime} GMT-6</strong></p>
         <p>Location: <strong>${client_location}</strong></p>
