@@ -41,18 +41,37 @@ async function getUserInfo(token) {
         console.error('Error getting user info:', error);
         return null;
     }
+};
+
+async function getUserVerificationStatus(token) {
+    hashedToken = Encryptor.encrypt(token);
+
+    try {
+        const userInfo = await DBUtils.getUserVerificationStatus(hashedToken);
+        
+        if (userInfo.rows.length === 0) {
+            return false;
+        }
+
+        if (userInfo.rows[0].verified) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    catch (error) {
+        console.error('Error getting user info:', error);
+        return null;
+    }
 }
 
-let test1 = '';
-
-getUserInfo('webmailer_i6psHKXCPalipw0R5Ijg').then((data) => {
-    test1 = data;
+getUserVerificationStatus('webmailer_i6psHKXCPalipw0R5Ijg').then((data) => {
+    console.log(data);
 });
-
-console.log(test1);
  
 
 module.exports = {
     checkValidToken,
-    getUserInfo
+    getUserInfo,
+    getUserVerificationStatus
 };

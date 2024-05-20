@@ -42,9 +42,20 @@ function getUserWebsite(token) {
   return db.query(query, [token]);
 }
 
+/*
+    Get user verification status from Postgres DB
+    @params {string} token
+    @returns {Promise} Promise object represents the user verification status
+*/
+function getUserVerificationStatus(token) {
+  const query = `SELECT verified FROM users WHERE token = $1;`;
+  return db.query(query, [token]);
+}
+
 module.exports = {
     getUserInfo,
     getUsername,
     getUserEmail,
-    getUserWebsite
+    getUserWebsite,
+    getUserVerificationStatus
 };
