@@ -14,4 +14,6 @@ function encrypt(token) {
 }
 
 
-exports.encrypt = encrypt;
+module.exports = {  
+    encrypt
+};
