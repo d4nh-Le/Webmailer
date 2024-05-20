@@ -52,10 +52,16 @@ function getUserVerificationStatus(token) {
   return db.query(query, [token]);
 }
 
+function addUser(username, email, page, verified) {
+  const query = `INSERT INTO users (username, email, website, verified) VALUES ($1, $2, $3, $4);`;
+  return db.query(query, [username, email, page, verified]);
+}
+
 module.exports = {
     getUserInfo,
     getUsername,
     getUserEmail,
     getUserWebsite,
-    getUserVerificationStatus
+    getUserVerificationStatus,
+    addUser,
 };
