@@ -21,6 +21,12 @@ exports.sendNotification = async (req, res) => {
         return;
     }
 
+    const isVerified = await DBService.getUserVerificationStatus(req.query.key);
+    if(!isVerified) {
+        res.status(400).json({ error: 'Error: User not verified' });
+        return;
+    }
+
     
     const client_location = await Locator.getGeoIp(req.query.ip);
     const currentTime = new Date().toLocaleString('en-GB').replace(',', '');
