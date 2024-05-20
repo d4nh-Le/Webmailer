@@ -1,6 +1,6 @@
 const request = require('supertest');
 const express = require('express');
-const { validateKey, validateWebsitePage } = require('../../utilities/validation.utility');
+const { validateKey, validateWebsitePage } = require('../../utilities/mailer_utilities/Mailer_validation.utility');
 
 const app = express();
 

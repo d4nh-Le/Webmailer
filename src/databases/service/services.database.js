@@ -43,6 +43,15 @@ async function getUserInfo(token) {
     }
 }
 
+let test1 = '';
+
+getUserInfo('webmailer_i6psHKXCPalipw0R5Ijg').then((data) => {
+    test1 = data;
+});
+
+console.log(test1);
+ 
+
 module.exports = {
     checkValidToken,
     getUserInfo
