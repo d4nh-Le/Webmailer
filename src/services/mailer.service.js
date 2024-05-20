@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer');
-const keyModule = require('../utilities/key.utility');
+const DBService = require('../databases/service/services.database');
 const Locator = require('../utilities/geoip.utility');
 
 const mailService = 'gmail';
@@ -15,12 +15,12 @@ const transporter = nodemailer.createTransport({
 
 exports.sendNotification = async (req, res) => {
 
-    if(keyModule.checkValidKey(req.query.key) === false) {
+    if(DBService.checkValidToken(req.query.key) === false) {
         res.status(400).json({ error: 'Error: Invalid Key' });
         return;
     }
 
-    const client_info = await keyModule.getKeyInfo(req.query.key)[0];
+    const client_info = await DBService(req.query.key);
     const client_location = await Locator.getGeoIp(req.query.ip);
     const currentTime = new Date().toLocaleString('en-GB').replace(',', '');
     
