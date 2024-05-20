@@ -6,7 +6,7 @@ const crypto = require('crypto');
     * Generate a key
     * @returns {string} key
 */
-function generateKey() {
+function generateToken() {
     let key = 'webmailer_';
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
@@ -79,6 +79,8 @@ function getKeyInfo(key) {
     return null;
 }
 
-exports.generateKey = generateKey;
-exports.checkValidKey = checkValidKey;
-exports.getKeyInfo = getKeyInfo;
+module.exports = {
+    generateToken,
+    checkValidKey,
+    getKeyInfo
+};
