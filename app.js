@@ -7,14 +7,17 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 const mailerService = require('./src/services/mailer.service');
-const Sanitizer = require('./src/utilities/sanitize.utility');
-const Validator = require('./src/utilities/validation.utility');
+const registerService = require('./src/services/registration.service');
+
+const Sanitizer = require('./src/utilities/mailer_utilities/Mailer_sanitize.utility');
+const Validator = require('./src/utilities/mailer_utilities/Mailer_validation.utility');
 
 
 app.use(cors());
 app.use(helmet());
 
-// app.put('/registration', )
+app.put('/registration',  )
+
 app.get('/trigger', [Sanitizer.sanitizeQuery, Validator.ValidateQuery], 
   mailerService.sendNotification
 );

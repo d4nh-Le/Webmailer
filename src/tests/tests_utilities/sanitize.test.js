@@ -1,7 +1,7 @@
 const request = require('supertest');
 const express = require('express');
 const { validationResult } = require('express-validator');
-const { sanitizeKey, sanitizePage, sanitizeIp, sanitizeReferer } = require('../../utilities/sanitize.utility');
+const { sanitizeKey, sanitizePage, sanitizeIp, sanitizeReferer } = require('../../utilities/mailer_utilities/Mailer_sanitize.utility');
 
 const app = express();
 
