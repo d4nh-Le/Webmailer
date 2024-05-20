@@ -1,5 +1,6 @@
 const DBUtils = require('../utility/utilities.database');
 const Encryptor = require('../../utilities/encryption.utility');
+const TokenModule = require('../../utilities/token.utility');
 
 
 /*
@@ -8,7 +9,6 @@ const Encryptor = require('../../utilities/encryption.utility');
     @returns {boolean} true if the token is valid, false otherwise
 */
 async function checkValidToken(token) {
-
     hashedToken = Encryptor.encrypt(token);
 
     try {
@@ -65,13 +65,22 @@ async function getUserVerificationStatus(token) {
     }
 }
 
-getUserVerificationStatus('webmailer_i6psHKXCPalipw0R5Ijg').then((data) => {
-    console.log(data);
-});
- 
+async function registerUser(username, email, page) {
+
+    verified = false;
+
+    try {
+        await DBUtils.addUser(username, email, page, verified);
+        return "User added successfully!";
+    }
+    catch (error) {
+        console.error('Error adding user:', error);
+    }
+}
 
 module.exports = {
     checkValidToken,
     getUserInfo,
-    getUserVerificationStatus
+    getUserVerificationStatus,
+    registerUser,
 };
