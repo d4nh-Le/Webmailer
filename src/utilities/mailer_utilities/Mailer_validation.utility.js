@@ -12,13 +12,13 @@ const validateRequestParameters = (req, res, next) => {
 
     for (let i = 0; i < requestParameters.length; i++) {
         if (!allowedParameters.includes(requestParameters[i])) {
-            return res.status(400).json({ error: `V201 - Invalid parameter: ${requestParameters[i]}` });
+            return res.status(400).json({ error: `MV201 - Invalid parameter: ${requestParameters[i]}` });
         }
     }
 
     for (let i = 0; i < requiredParameters.length; i++) {
         if (!requestParameters.includes(requiredParameters[i])) {
-            return res.status(400).json({ error: `V202 - Missing required parameter: ${requiredParameters[i]}` });
+            return res.status(400).json({ error: `MV202 - Missing required parameter: ${requiredParameters[i]}` });
         }
     }
 
@@ -29,7 +29,7 @@ const validateRequestParameters = (req, res, next) => {
  * Validate the key query parameter middleware
  */
 const validateKey = [
-    check('key').isLength({ min: 30, max: 30 }).withMessage('V203 - Invalid parameter: key - length error'),
+    check('key').isLength({ min: 30, max: 30 }).withMessage('MV203 - Invalid parameter: key - length error'),
     (req, res, next) => {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
@@ -43,7 +43,7 @@ const validateKey = [
  * Validate the website_page query parameter middleware
  */
 const validateWebsitePage = [
-    check('page').isString().withMessage('V204 - Invalid page - format error'),
+    check('page').isString().withMessage('MV204 - Invalid page - format error'),
     (req, res, next) => {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {

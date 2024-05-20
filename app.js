@@ -9,16 +9,20 @@ const port = process.env.PORT || 8080;
 const mailerService = require('./src/services/mailer.service');
 const registerService = require('./src/services/registration.service');
 
-const Sanitizer = require('./src/utilities/mailer_utilities/Mailer_sanitize.utility');
-const Validator = require('./src/utilities/mailer_utilities/Mailer_validation.utility');
+const mailerSanitizer = require('./src/utilities/mailer_utilities/Mailer_sanitize.utility');
+const mailerValidator = require('./src/utilities/mailer_utilities/Mailer_validation.utility');
+
+const registrationSanitizer = require('./src/utilities/registration_utilities/Registration_sanitize.utility');
+const registrationValidator = require('./src/utilities/registration_utilities/Registration_validation.utility');
 
 
 app.use(cors());
 app.use(helmet());
 
-app.put('/registration',  )
+app.get('/registration', [registrationSanitizer.sanitizeRegistration, registrationValidator.validateRegistration], 
+  registerService.registerUser);
 
-app.get('/trigger', [Sanitizer.sanitizeQuery, Validator.ValidateQuery], 
+app.get('/trigger', [mailerSanitizer.sanitizeQuery, mailerValidator.ValidateQuery], 
   mailerService.sendNotification
 );
     
