@@ -52,10 +52,41 @@ function getUserVerificationStatus(token) {
   return db.query(query, [token]);
 }
 
-function addUser(username, email, page, verified) {
-  const query = `INSERT INTO users (username, email, website, verified) VALUES ($1, $2, $3, $4);`;
-  return db.query(query, [username, email, page, verified]);
+/*
+    Find the token in the Postgres DB
+    @params {string} username
+    @returns {Promise} Promise object represents the token
+*/
+function tokenLookUp(username) {
+  const query = `SELECT token FROM users WHERE username = $1;`;
+  return db.query(query, [username]);
 }
+
+/*
+    Add a user to the Postgres DB
+    @params {string} token
+    @params {string} username
+    @params {string} email
+    @params {string} page
+    @params {boolean} verified
+    @returns {Promise} Promise object represents the user information
+*/
+function addUser(token, username, email, page, verified) {
+  const query = `INSERT INTO users (token, username, email, website, verified) VALUES ($1, $2, $3, $4, $5);`;
+  return db.query(query, [token, username, email, page, verified]);
+}
+
+/*
+    Add a token to the Postgres DB
+    @params {string} token
+    @params {string} username
+    @returns {Promise} Promise object represents the token
+*/
+function addToken(token, username, verified) {
+  const query = `UPDATE users SET token = $1, verified = $2 WHERE username = $3;`;
+  return db.query(query, [token, verified, username]);
+}
+
 
 module.exports = {
     getUserInfo,
@@ -64,4 +95,6 @@ module.exports = {
     getUserWebsite,
     getUserVerificationStatus,
     addUser,
+    tokenLookUp,
+    addToken,
 };
