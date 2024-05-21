@@ -43,6 +43,11 @@ async function getUserInfo(token) {
     }
 };
 
+/*
+    Get user verification status
+    @params {string} token
+    @returns {boolean} true if the user is verified, false otherwise
+*/
 async function getUserVerificationStatus(token) {
     hashedToken = Encryptor.encrypt(token);
 
@@ -65,16 +70,58 @@ async function getUserVerificationStatus(token) {
     }
 }
 
-async function registerUser(username, email, page) {
+async function tokenExits(username, token) {
+    try {
+        const userToken = await DBUtils.tokenLookUp(username);
+        if (userToken.rows.length === 0) {
+            return false;
+        }
 
+        if (userToken.rows[0].token === token) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    catch (error) {
+        console.error('Error checking token:', error);
+    }
+}
+
+
+/*
+    Register a user
+    @params {string} username
+    @params {string} email
+    @params {string} page
+    @returns {string} temporary hashedToken
+*/
+async function registerUser(username, email, page) {
+    temporaryToken = TokenModule.generateToken();
+
+    hashedToken = Encryptor.encrypt(temporaryToken);
     verified = false;
 
     try {
-        await DBUtils.addUser(username, email, page, verified);
-        return "User added successfully!";
+        await DBUtils.addUser(hashedToken, username, email, page, verified);
+        return hashedToken;
     }
     catch (error) {
         console.error('Error adding user:', error);
+    }
+}
+
+async function verifyUser(username) {
+    officialToken = TokenModule.generateToken();
+    hashedToken = Encryptor.encrypt(officialToken);
+    verified = true;
+
+    try {
+        await DBUtils.addToken(hashedToken ,username, verified);
+        return officialToken;
+    }
+    catch (error) {
+        console.error('Error verifying user:', error);
     }
 }
 
@@ -83,4 +130,6 @@ module.exports = {
     getUserInfo,
     getUserVerificationStatus,
     registerUser,
+    tokenExits,
+    verifyUser,
 };
