@@ -1,14 +1,88 @@
+.register-container {
+    padding: 20px 20vw 60px 20vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .register-box {
-    padding : 20px 20vw 20px 20vw;
+    padding : 20px 20vw 60px 20vw;
     display : flex;
     flex-direction : column;
     justify-content : center;
     align-items : center;
 }
 
-.register-title {
+.register-form {
+    display : flex;
+    flex-direction : column;
+    justify-content : center;
+    align-items : center;
+
+}
+
+.register-title-header {
     font-size: 30px;
     color: var(--header);
     font-family: var(--title-font);
     padding: 10px 0 15px 0;
 }
+
+/* Input container */
+.input-container {
+    position: relative;
+    margin: 20px;
+  }
+  
+  /* Input field */
+  .input-field {
+    display: block;
+    width: 400px;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid var(--text-fade);
+    outline: none;
+    background-color: transparent;
+  }
+  
+  /* Input label */
+  .input-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 16px;
+    color: rgba(204, 204, 204, 0);
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+
+  .input-note {
+    font-size: 13px;
+    color: var(--text-fade);
+    padding: 5px 0 5px 0;
+  }
+  
+  /* Input highlight */
+  .input-highlight {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background-color: var(--page-color);
+    transition: all 0.3s ease;
+  }
+  
+  /* Input field:focus styles */
+  .input-field:focus + .input-label {
+    top: -20px;
+    font-size: 12px;
+    color: var(--page-color);
+  }
+  
+  .input-field:focus + .input-label + .input-highlight {
+    width: 100%;
+  }
+  
