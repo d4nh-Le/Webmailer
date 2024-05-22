@@ -86,3 +86,12 @@
     width: 100%;
   }
   
+  .input-notification {
+    font-size: 15px;
+    color: rgb(21, 139, 21);
+    padding: 5px 0 5px 0;
+  }
+
+  .input-notification.error p {
+    color: rgb(250, 52, 52);
+}

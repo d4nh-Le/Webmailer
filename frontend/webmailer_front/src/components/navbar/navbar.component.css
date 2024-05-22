@@ -8,10 +8,11 @@
     align-items: center;
 }
 
-.navbar-left {
+.navbar-left a{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-decoration: none;
 }
 
 .navbar-right {
@@ -32,6 +33,11 @@
 
 .navbar-item {
     padding: 20px;
+    text-decoration: none;
+    color: var(--header);
+}
+
+.navbar-item a {
     text-decoration: none;
     color: var(--header);
 }
