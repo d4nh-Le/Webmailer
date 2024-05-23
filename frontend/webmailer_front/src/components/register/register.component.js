@@ -25,7 +25,8 @@ function Register() {
         };
 
         try {
-            const response = await axios.get('http://localhost:8080/registration', { params: data });
+            const response = await axios.get('http://w3bmailer.site/registration', { params: data });
+            // const response = await axios.get('http://localhost:8080/registration', { params: data }); // for local testing
 
             if (response.status === 200) {
                 setResNotification('Successfully registered! Check your email for verification.');
