@@ -141,7 +141,7 @@ Webmailer mainly offers its service through APIs, there are several benefits by 
 
 * Tokens are unique, preventing password guessing or password reuse across services. 
 * Webmailer is stateless, by using PATs, it simplify management process. When receive request from another server, Webmailer will compare `hashed request token` vs `hashed stored token` to authenticate users.
-* PATs is a more suitable solution for authentication when the service requires few to no human intervention.
+* PATs is a more suitable solution for authentication when the service requires little to no human intervention.
 
 However, by choosing to simplify authentication process on client side, Webmailer server side will consequently need to implement more complex and robust security system:
 * Generate unique tokens
