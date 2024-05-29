@@ -175,7 +175,7 @@ const pool = new Pool({
 });
 ```
 
-After sucessfully finished intergrating PostgreSQL, Webmailer now can be scaled for more users and capable of create deeper and more complicated analytics based on user stored data in the database. 
+After sucessfully finished intergrating PostgreSQL, Webmailer now can be scaled for more users and capable of analyzing and creating more complicated analytics based on stored user data in the database. 
 
 ## Future Plans
 Some features I would like to add in the futures:
