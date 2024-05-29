@@ -143,12 +143,39 @@ Webmailer mainly offers its service through APIs, there are several benefits by 
 * Webmailer is stateless, by using PATs, it simplify management process. When receive request from another server, Webmailer will compare `hashed request token` vs `hashed stored token` to authenticate users.
 * PATs is a more suitable solution for authentication when the service requires little to no human intervention.
 
-By implementing PATs for an API-based service like Webmailer, it helps creating a more secured, controlled authentication system on the server and a simpler process of client servers that use Webmailer.
-
 However, by choosing to simplify authentication process on client side, Webmailer server side will consequently need to implement more complex and robust security system:
 * Generate unique tokens
 * Token encryption and hashing aglorithm.
 * Token storage and expiration mechanism.
+
+### PostgreSQL Integration
+At first, it was my intention to create Webmailer for personal use, as a mean to control and monitor my website activities and traffics. However, as the development process goes on, I have decided that my tool could also be available for the public. Webmailer can be helpful to everyone whoever encounters a problem like I have. 
+
+However, this decision mean I would have to intergrate a more scalable and maintainable solution for data persistence. Therefore, I have decided to intergrate postgreSQL into Webmailer, as a way to scale to application and can provide the tool to everyone not just myself. 
+
+PostgreSQL is an open-source SQL database solution, with the core purpose, like any other database services, to store information. PostgreSQL database works by communicate with application through **PORT**. In computer system, ports are communication endpoints between the computer and the services such as applications. When installing Postgres, it automatically chooses `PORT 5432` if it is available to listen from.  One can understand Postgres as a service in the computer system that provides and offers its service through a port like Angular or React's local development ports.
+
+To simplify, one can understand Postgres as a service and can be communicated just like any other services through a door, the door is numbered `5432`.
+
+![computer_ports](https://github.com/d4nh-Le/Webmailer/blob/main/src/assets/ports.jpeg?raw=true "Before Cache")
+
+In database system, there is a very crucial concept known as `Connection Pool` - a set of pre-established connections used to communicate between applications and the database. A Connection Pool contains many connections, this offers versitility for application with high fault-tolerant, because when one database connection runs into an issue, there are other connections to handle the application requests. 
+
+`pg` library offers an interface to create and manage Connection Pools with different approriate credentials, allowing different parts of the application have the necessary resources with approriate permissions to communicate and work with the database.
+
+```
+//Connection_pool.database.js
+
+const pool = new Pool({
+  user: process.env.MAILER_DB_U,
+  host: process.env.MAILER_HOST,
+  database: process.env.MAILER_DB,
+  password: process.env.MAILER_DB_P,
+  port: process.env.MAILER_PORT
+});
+```
+
+After sucessfully finished intergrating PostgreSQL, Webmailer now can be scaled for more users and capable of create deeper and more complicated analytics based on user stored data in the database. 
 
 ## Future Plans
 Some features I would like to add in the futures:
