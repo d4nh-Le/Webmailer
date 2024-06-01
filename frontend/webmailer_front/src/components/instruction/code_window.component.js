@@ -20,11 +20,13 @@ const axios = require('axios');
 const webmailerTrigger = async (req, res, next) => {
     const key = [YOUR_API_KEY]; 
     const page = [YOUR_WEBSITE_NAME];
-    const ip = req.ip; 
+    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     const referer = req.get('Referer') || ''; 
 
+    const parameters = { key, page, ip, referer};
+
     try {
-     await axios.post('https://w3bmailer.site/trigger', { key, page, ip, referer });
+     await axios.post('https://w3bmailer.site/trigger', { parameters });
     } catch (error) {
      console.error('Error sending to server:', error);
     }
