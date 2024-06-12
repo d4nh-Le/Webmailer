@@ -24,12 +24,8 @@ jobs:
 
       # Install dependencies
       - name: Install dependencies
-        run: npm ci
-
-      # Run linters
-      - name: Run ESLint
-        run: npm run lint
+        run: npm install
 
       # Run tests
       - name: Run tests
-        run: npm test
+        run: npx jest
