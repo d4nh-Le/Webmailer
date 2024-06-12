@@ -9,7 +9,7 @@ const TokenModule = require('../../utilities/token.utility');
     @returns {boolean} true if the token is valid, false otherwise
 */
 async function checkValidToken(token) {
-    hashedToken = Encryptor.encrypt(token);
+    let hashedToken = Encryptor.encrypt(token);
 
     try {
         const userInfo = await DBUtils.getUserInfo(hashedToken);
@@ -31,7 +31,7 @@ async function checkValidToken(token) {
     @returns {object} user info
 */
 async function getUserInfo(token) {
-    hashedToken = Encryptor.encrypt(token);
+    let hashedToken = Encryptor.encrypt(token);
 
     try {
         const userInfo = await DBUtils.getUserInfo(hashedToken);
@@ -49,7 +49,7 @@ async function getUserInfo(token) {
     @returns {boolean} true if the user is verified, false otherwise
 */
 async function getUserVerificationStatus(token) {
-    hashedToken = Encryptor.encrypt(token);
+    let hashedToken = Encryptor.encrypt(token);
 
     try {
         const userInfo = await DBUtils.getUserVerificationStatus(hashedToken);
@@ -97,10 +97,10 @@ async function tokenExits(username, token) {
     @returns {string} temporary hashedToken
 */
 async function registerUser(username, email, page) {
-    temporaryToken = TokenModule.generateToken();
+    const temporaryToken = TokenModule.generateToken();
 
-    hashedToken = Encryptor.encrypt(temporaryToken);
-    verified = false;
+    const hashedToken = Encryptor.encrypt(temporaryToken);
+    let verified = false;
 
     try {
         await DBUtils.addUser(hashedToken, username, email, page, verified);
@@ -112,9 +112,9 @@ async function registerUser(username, email, page) {
 }
 
 async function verifyUser(username) {
-    officialToken = TokenModule.generateToken();
-    hashedToken = Encryptor.encrypt(officialToken);
-    verified = true;
+    const officialToken = TokenModule.generateToken();
+    const hashedToken = Encryptor.encrypt(officialToken);
+    let verified = true;
 
     try {
         await DBUtils.addToken(hashedToken ,username, verified);
