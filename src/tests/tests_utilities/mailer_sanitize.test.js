@@ -52,7 +52,7 @@ describe('sanitize.utility', () => {
         .get('/testKey');
 
     expect(response.status).toBe(400);
-    expect(response.text).toBe('S101 - Missing required parameter: key');
+    expect(response.text).toBe('MS101 - Missing required parameter: key');
     });
 
   it('sanitizeKey should sanitize - trim() the key query parameter', async () => {
@@ -85,7 +85,7 @@ describe('sanitize.utility', () => {
         .get('/testPage');
 
         expect(response.status).toBe(400);
-        expect(response.text).toBe('S1021 - Missing required parameter: page');
+        expect(response.text).toBe('MS1021 - Missing required parameter: page');
     });
 
     it('sanitizePage should sanitize - page query parameter is less than 70 characters', async () => {
@@ -102,7 +102,7 @@ describe('sanitize.utility', () => {
         .query({page: 'longparameterswillnotbeacceptedlongparameterswillnotbeacceptedlongparameterswillnotbeaccepted' });
 
         expect(response.status).toBe(400);
-        expect(response.text).toBe('S1022 - Invalid parameter: page - must be less than 70 characters');
+        expect(response.text).toBe('MS1022 - Invalid parameter: page - must be less than 70 characters');
     });
 
     it('sanitizePage should sanitize - trim() the page query parameter', async () => {
@@ -149,7 +149,7 @@ describe('sanitize.utility', () => {
         .query({ip: 'invalidIP' });
 
         expect(response.status).toBe(400);
-        expect(response.text).toBe('S103 - Invalid parameter: IP');
+        expect(response.text).toBe('MS103 - Invalid parameter: IP');
     });
 
     it('sanitizeIp should sanitize - IP query parameter incorrect format p2', async () => {
@@ -158,7 +158,7 @@ describe('sanitize.utility', () => {
         .query({ip: '100.100.100.100.10.10' });
 
         expect(response.status).toBe(400);
-        expect(response.text).toBe('S103 - Invalid parameter: IP');
+        expect(response.text).toBe('MS103 - Invalid parameter: IP');
     });
 
     /* Parameter: referer 
@@ -190,7 +190,7 @@ describe('sanitize.utility', () => {
         .query({referer: 'invalidURL' });
 
         expect(response.status).toBe(400);
-        expect(response.text).toBe('S104 - Invalid parameter: referer');
+        expect(response.text).toBe('MS104 - Invalid parameter: referer');
     });
 
     it('sanitizeReferer should sanitize - referer query parameter should be sanitized to only return the domain', async () => {

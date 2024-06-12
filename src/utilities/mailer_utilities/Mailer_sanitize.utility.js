@@ -12,7 +12,7 @@ const sanitizeKey = [
  * Sanitize the website_page query parameter middleware
  */
 const sanitizePage = [
-    check('page').exists().withMessage('MS1021 - Missing required parameter: page').isLength({ max: 70 }).withMessage('S1022 - Invalid parameter: page - must be less than 70 characters').trim().escape(),
+    check('page').exists().withMessage('MS1021 - Missing required parameter: page').isLength({ max: 70 }).withMessage('MS1022 - Invalid parameter: page - must be less than 70 characters').trim().escape(),
 ];
 
 /*
