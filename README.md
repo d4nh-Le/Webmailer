@@ -49,11 +49,13 @@ const axios = require('axios');
 const webmailerTrigger = async (req, res, next) => {
     const key = [YOUR_API_KEY]; 
     const page = [YOUR_WEBSITE_NAME];
-    const ip = req.ip; 
-    const referer = req.get('Referer') || ''; 
+    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    const referer = req.get('Referer') || '';
+
+    const params = { key, page};
 
     try {
-     await axios.post('https://w3bmailer.site/trigger', { key, page, ip, referer });
+    axios.get('https://w3bmailer.site/trigger', { params });
     } catch (error) {
      console.error('Error sending to server:', error);
     }
@@ -64,7 +66,7 @@ const webmailerTrigger = async (req, res, next) => {
 * `[YOUR_API_KEY]` - Your Token sent to your registered email after successful verification.
 * `[YOUR_WEBSITE_NAME]` - The name of the Page in which the visitor visits (ex: myshop.com/home - page should be "home"). This parameter will let you know specifically the visitor visits which route in your application.
 * `ip` (optional) - This parameter will also send the request ip address to Webmailer server. Our server will analyze and return the **visitor approximate location** in the report sent through email.
-* `referer` - This parameter will let you know where they come to your website from (such as from Google, Facebook, etc.)
+* `referer` - This parameter will let you know where they come to your website from (such as from Google, Facebook, etc.) (**Note: only put this parameter in your homepage or somewhere you know highly likely will get transfered to from another website. If your page is transfered from another page within your website, this `referer` will be empty**.
 
 **IMPORTANT**: `ALL PARAMETERS SENT TO WEBMAILER SERVER SHOULD BE WRITTEN AS IN THE CODE SAMPLE.` Parameters such as `key`, `page`, `ip`, `referer` should be written as it is (lowercase). Any other parameters will not be accepted.
 
