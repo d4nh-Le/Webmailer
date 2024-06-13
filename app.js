@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const app = express();
+// eslint-disable-next-line no-process-env
 const port = process.env.PORT || 8080;
 
 const mailerService = require('./src/services/mailer.service');
