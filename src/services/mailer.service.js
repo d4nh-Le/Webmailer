@@ -33,7 +33,7 @@ exports.sendNotification = async (req, res) => {
     
     DBService.getUserInfo(req.query.key).then((client_info) => {
 
-        locatedUser = client_info[0];
+        const locatedUser = client_info[0];
         
         const mailOptions = {
             from: process.env.MAILER_EMAIL,
