@@ -2,7 +2,6 @@ import globals from "globals";
 import pluginJs from "@eslint/js";
 import pluginReact from "eslint-plugin-react";
 import pluginReactConfig from "eslint-plugin-react/configs/recommended.js";
-import { fixupConfigRules } from "@eslint/compat";
 
 export default [
   {
@@ -22,7 +21,7 @@ export default [
     },
     settings: {
       react: {
-        version: "detect", // Automatically detect the React version
+        version: "detect", 
       },
     },
     rules: {
@@ -49,5 +48,4 @@ export default [
       "react/react-in-jsx-scope": "off",
     },
   },
-  ...fixupConfigRules(pluginReactConfig),
 ];

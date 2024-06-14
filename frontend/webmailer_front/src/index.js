@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
+import App from './App';
+/* eslint-enable no-unused-vars */
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
