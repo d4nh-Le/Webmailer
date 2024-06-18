@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint" : "npx eslint .",
+    "build": "cd frontend && npm run build",
+    "test:unit": "npx jest --testPathPattern=unit-tests --coverage",
+    "test:integration": "npx jest --testPathPattern=integration-tests --coverage",
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",

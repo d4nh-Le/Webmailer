@@ -3,3 +3,4 @@ node_modules
 keypairs.json
 dbscript.text
 schema_construct.txt
+./frontend/build
