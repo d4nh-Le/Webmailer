@@ -31,7 +31,7 @@
     "lint" : "npx eslint .",
     "test:unit": "npx jest --testPathPattern=unit-tests --coverage",
     "test:integration": "npx jest --testPathPattern=integration-tests --coverage",
-    "build": "cd frontend && npm run build",
+    "build": "cd frontend && npm install && npm run build",
     "docker:build": "docker build -t webmailer_image .",
     "start": "node app.js"
   },
