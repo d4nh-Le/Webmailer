@@ -1,0 +1,11 @@
+node_modules
+
+coverage
+
+.env
+
+# Ignore everything in the frontend directory
+frontend/*
+
+# Don't ignore the frontend build directory
+!frontend/build

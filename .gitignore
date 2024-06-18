@@ -1,5 +1,6 @@
 .env
-node_modules 
+node_modules
+coverage
 keypairs.json
 dbscript.text
 schema_construct.txt
