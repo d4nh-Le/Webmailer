@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const app = express();
+const path = require('path');
 // eslint-disable-next-line no-process-env
 const port = process.env.PORT || 8080;
 
@@ -32,6 +33,14 @@ app.get('/registration', [registrationSanitizer.sanitizeRegistration, registrati
 app.get('/trigger', [mailerSanitizer.sanitizeQuery, mailerValidator.ValidateQuery], 
   mailerService.sendNotification
 );
+
+// production mode
+// after build is generated
+app.use(express.static(path.join(__dirname, 'frontend/build')));
+
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'));
+});
     
 
 app.listen(port, () => {

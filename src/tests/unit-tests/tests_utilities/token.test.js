@@ -1,4 +1,4 @@
-const TokenModule = require('../../utilities/token.utility');
+const TokenModule = require('../../../utilities/token.utility');
 
 describe('Token.utility - generateKey()', () => {
 

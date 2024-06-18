@@ -1,4 +1,4 @@
-const Locator = require('../../utilities/geoip.utility');
+const Locator = require('../../../utilities/geoip.utility');
 
 describe('GeoIP', () => {
 
