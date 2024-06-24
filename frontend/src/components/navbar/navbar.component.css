@@ -1,11 +1,11 @@
 .navbar {
     height: 40px;
     border-bottom: 1px solid #e0e0e0;
-    padding: 10px 20vw 10px 20vw;
     background-color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .navbar-left a{
@@ -15,7 +15,7 @@
     text-decoration: none;
 }
 
-.navbar-right {
+.navright-original {
     display: flex;
     justify-content: space-between;
 }
@@ -40,4 +40,70 @@
 .navbar-item a {
     text-decoration: none;
     color: var(--header);
+}
+
+.navright-dropdown {
+    display: none;
+    position: relative; 
+    
+}
+
+.navright-dropdown.visible {
+    display: block;
+}
+  
+.dropdown-menu {
+  position: absolute;
+  right: 0; 
+  top: 135%; 
+  width: 100vw; 
+  display: none;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: white;
+}
+
+.dropdown-icon {
+    padding-right: 4vw;
+}
+  
+.navright-dropdown .dropdown-menu.show {
+    display: block;
+}
+
+@media only screen and (max-width: 600px) {
+    .navbar {
+        padding: 10px 0vw 10px 4vw;
+    }
+
+    .navright-original {
+        display: none;
+    }
+    
+    .navright-dropdown {
+        display: block;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .navbar {
+        padding: 10px 4vw 10px 4vw;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .navbar {
+        padding: 10px 10vw 10px 10vw;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .navbar {
+        padding: 10px 15vw 10px 15vw;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .navbar {
+        padding: 10px 20vw 10px 20vw;
+    }
 }
