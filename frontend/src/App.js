@@ -17,10 +17,10 @@ function App() {
       <Navbar />
       <Intro />
       <BriefMap />
-      {/* <Instruction />
+      <Instruction />
       <CodeWindow />
       <Register />
-      <FooterBar /> */}
+      <FooterBar />
     </div>
   );
 }
