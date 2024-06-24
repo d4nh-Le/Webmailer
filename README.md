@@ -181,7 +181,7 @@ After sucessfully finished intergrating PostgreSQL, Webmailer now can be scaled 
 
 ## Future Plans
 Some features I would like to add in the futures:
-- [ ] Responsive design for tablets and mobile devices.
+- [X] Responsive design for tablets and mobile devices.
 - [ ] Implement Rate Limiting mechanism - additionally increase server security and integrity.
 - [ ] Additional options for users to choose how many times and when Webmailer will send reports.
 - [ ] Weekly/Monthly report functionality for registered website.
