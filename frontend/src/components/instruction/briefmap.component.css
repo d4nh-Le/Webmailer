@@ -1,13 +1,7 @@
 .brief-map {
-    padding: 40px 20vw 40px 20vw;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-}
-
-.brief-card-item {
-    margin: 0 10px 0 10px;
 }
 
 .brief-card {
@@ -50,4 +44,55 @@
     font-size: 18px;
     color: var(--text);
   }
+
+@media only screen and (max-width: 600px) {
+    .brief-map {
+        padding: 20px 4vw 40px 4vw;
+        flex-direction: column;
+    }
+
+    .brief-card-item {
+      margin: 10px 10px 10px 10px;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .brief-map {
+    padding: 20px 4vw 40px 4vw;
+    flex-direction: column;
+  }
+
+  .brief-card-item {
+  margin: 10px 10px 10px 10px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .brief-map {
+    padding: 20px 4vw 40px 4vw;
+    flex-direction: column;
+  }
+
+  .brief-card-item {
+  margin: 10px 10px 10px 10px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .brief-map {
+    padding: 20px 4vw 40px 4vw;
+    flex-direction: column;
+  }
+
+  .brief-card-item {
+  margin: 10px 10px 10px 10px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .brief-map {
+    padding: 20px 20vw 40px 20vw;
+    flex-direction: row;
+  }
+}
   
