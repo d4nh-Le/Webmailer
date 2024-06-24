@@ -16,8 +16,8 @@ function App() {
     <div className="App">
       <Navbar />
       <Intro />
-      {/* <BriefMap />
-      <Instruction />
+      <BriefMap />
+      {/* <Instruction />
       <CodeWindow />
       <Register />
       <FooterBar /> */}
