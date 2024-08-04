@@ -1,28 +1,23 @@
 import './App.css';
 /* eslint-disable no-unused-vars */
-import Navbar from '../src/components/navbar/navbar.component';
-import FooterBar from './components/footer/footer.component';
-import Intro from './components/intro/intro.component';
-import BriefMap from './components/instruction/briefmap.component';
-import Instruction from './components/instruction/instruction.component';
-import CodeWindow from './components/instruction/code_window.component';
-import Register from './components/register/register.component';
+import Home from './containers/home/home'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 /* eslint-enable no-unused-vars */
 
 
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <Intro />
-      <BriefMap />
-      <Instruction />
-      <CodeWindow />
-      <Register />
-      <FooterBar />
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/home" element={<Home />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
+
+
 
 export default App;
